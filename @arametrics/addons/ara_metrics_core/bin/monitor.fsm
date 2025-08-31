@@ -1,0 +1,125 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, monitor">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Main_Loop",2,250,-38.082535,-150.325089,51.917480,-100.325089,0.000000,"Main Loop"};
+item1[] = {"Increase_CPS",4,218,-180.379883,-150.197006,-90.379837,-100.197006,1.000000,"Increase CPS"};
+item2[] = {"Dump",4,4314,93.780640,-150.137726,183.780640,-100.137733,2.000000,"Dump"};
+item3[] = {"Initialization",0,250,-40.746292,-290.123077,49.253708,-240.122955,0.000000,"Initialization"};
+item4[] = {"_",4,218,-39.487946,-220.142624,50.512054,-170.142624,0.000000,""};
+item5[] = {"End",1,250,-36.928162,13.822937,53.071869,63.822922,0.000000,"End"};
+item6[] = {"Exit",4,218,-37.952118,-72.186295,52.047882,-22.186295,0.000000,"Exit"};
+link0[] = {0,1};
+link1[] = {0,2};
+link2[] = {0,6};
+link3[] = {1,0};
+link4[] = {2,0};
+link5[] = {3,4};
+link6[] = {4,0};
+link7[] = {6,5};
+globals[] = {0.000000,0,0,0,0,640,480,1,10,6316128,1,-276.794586,267.957001,124.421913,-353.791016,990,1804,1};
+window[] = {2,-1,-1,-1,-1,955,196,1636,196,3,1025};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "monitor";
+        class States
+        {
+                /*%FSM<STATE "Main_Loop">*/
+                class Main_Loop
+                {
+                        name = "Main_Loop";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Dump">*/
+                                class Dump
+                                {
+                                        itemno = 2;
+                                        priority = 2.000000;
+                                        to="Main_Loop";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _lastDump) >= 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"""MaverickMetrics"" callExtension format [""%1:%2:%3"", _cps, round diag_fps, count allMissionObjects ""All""];" \n
+                                         "private _text = format [""FPS: %1 | CPS: %2 | Players: %3 | Objects: %4 #1011"",round diag_fps,_cps,count allPlayers,count allMissionObjects ""All""];" \n
+                                         "if (isServer) then {" \n
+                                         "	_text call RRPServer_util_debugConsole;" \n
+                                         "}else{" \n
+                                         "	_text call RRPHC_util_debugConsole;" \n
+                                         "};" \n
+                                         "_lastDump = diag_tickTime;" \n
+                                         "_cps = 0;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Increase_CPS">*/
+                                class Increase_CPS
+                                {
+                                        itemno = 1;
+                                        priority = 1.000000;
+                                        to="Main_Loop";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_cps = _cps + 1;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Exit">*/
+                                class Exit
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="End";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"false"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Initialization">*/
+                class Initialization
+                {
+                        name = "Initialization";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"_cps = 0;" \n
+                         "_lastDump = diag_tickTime;" \n
+                         "" \n
+                         "diag_log ""Maverick ARA Metrics: FSM started"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="Main_Loop";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "End">*/
+                class End
+                {
+                        name = "End";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"diag_log ""Maverick ARA Metrics: FSM stopped"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Initialization";
+        finalStates[] =
+        {
+                "End",
+        };
+};
+/*%FSM</COMPILE>*/

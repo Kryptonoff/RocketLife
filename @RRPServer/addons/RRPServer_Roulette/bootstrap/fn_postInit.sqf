@@ -1,0 +1,4 @@
+
+call RRPServer_russianRoulette_initServer;
+call RRPServer_russianRoulette_initialize;
+true

@@ -1,0 +1,1 @@
+allPlayers select {_x getVariable ["RRPSide","civ"] isEqualTo _this}

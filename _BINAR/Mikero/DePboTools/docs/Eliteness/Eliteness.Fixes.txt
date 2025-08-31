@@ -1,0 +1,445 @@
+bis ofp/arma general inspection and play tool by Mikero@norfolk.nf
+see readmegeneral
+min dll is 6.24
+3.50 made compat to dll for rtm files and rapify
+3.49
+fixed dialog windows to show in application bar rather than all of eliteness dissappearing
+put class, map and damage at top of odol modelinfo tree
+3.48 made compatible to dll
+3.47 made compatible to dll
+3.46 made compatible to dll
+	displayed 3 new floats to modelinfo header in odol p3d's. adjusted for type72's
+3.45 made compatible to dll
+3.44 made compatible to dll
+3.43 made compatible to dll
+3.42 made compatible to dll
+cleaned up p3d gui
+3.41 made compatible to dll
+changed display analyis for roads and land classes
+removed the keep text option for binarised rap
+
+3.40
+made compatible to dll
+wrp: fixed  land_xx display for very large islands (Altis)
+internal:
+removed last of _tsystem() calls relying instead on the quoting mechanism of io_system()
+3.39
+made compatible to dll pew
+removed dlg memory from depew. the position can be corrupted and no displayshown
+
+3.38
+removed dlg memory from dertm. the position can be corrupted and no displayshown
+this is prolly true of most others too
+recomplied elite, an unknwon miscompile occured in last release.
+
+3.37 now reads bis binarise dep files
+
+3.36
+corrected utf8 derapify display to utf8
+improved utf8 a bit more
+fixed mapinfo tree for binarised wrp
+
+3.35 made compatible to 5.57 dll
+3.34
+	made compatible to dll. specifically, p3d type70 longs
+
+3.33
+adjsuted to decode v70 p3d's
+3.32
+made compatible to new wrp api in dll;
+3.31
+made compatible to new wrp api in dll;
+
+3.30
+corrected quartnion display for land class models
+fixed land classes to be sorted
+
+3.29 made compat to dll
+
+3.28 changed tittle of extracted text when skel/rvmats
+
+
+3.27
+made compatible to dll with changes to rtm wrp and p3d formats
+
+3.26 
+saved unicode text documents properly with utf16 bom
+improved odol display to accumulate or not accumulate lod info in each panel
+
+3.25 made compat to dll
+
+3.24
+	fixed saveas icon
+
+3.23
+fixed rename folder function (which didn't)
+added del key to folder and file browser
+internal cleanup of a few more functions to shrink the code into the dll
+
+3.22
+added land classes for arma3 wrps
+3.21
+p3d 
+mlods fixed display to show textures
+general made it clearer that ofp panels are ofp only
+removed 'blank' from some displays as being annoying
+
+3.20
+reverted to utf8 not unicode
+allowed for ogg sound play
+
+3.19:
+
+assumed incoming asciiz files are utf encoded for purposes of displaying
+now 'remembers' position and size of various dialog screens along with those screens being adjustable
+registered keys in 'Mikero' rather than it's wierder location
+
+dertm:
+fixed treeview to react to first skeleton bone name
+added sounds display
+
+browser: fixed rename function
+
+3.18
+rtm: changed skel browser selection
+  cleared down panels for incorrect skel but still show new bones
+
+fxy:small unicode fix to analyzing an fxy file
+
+general: now preserves location and size of gui
+
+3.17
+made compatible to dll
+
+binarised p3d's:
+
+if no skeleton exists, but rvmats do, they are shown, rather than a blank skeleton which
+gave the impression of 'nothing interesting
+
+
+
+3.16
+fixed wrp packed grid 4 analysis for vbs 
+removed some xbox eliete utils which are now in the dll
+made compatible to dll
+
+3.15
+made compatible to dll with improved wrp decoding
+
+3.14
+fixed crash on binary p3ds
+fixed wss playsounds
+
+3.13
+made compat to dll
+
+3.12
+
+added template id to wrp model lists
+added autoplay for sound files including wss
+a few improvements for arma3 p3d's
+
+3.11
+fixed texheader decoding if an error thrown
+added drag n drop to FOLDER browser. you can now just drop the folder of interest onto the gui
+corrected folder on startup to point to the last accessed in BOLD
+
+3.10
+can't remember, i think mostly documentation
+
+2.99
+ensured the correct drive (generally p:) is set as current dir for creating pbo's. would otherwise failt external file checking (if enabled)
+fixed rtm issues
+
+2.98
+fixed flashpoint icon. all other tools have the mikero icon. this one stays for historical reasons
+added self installer
+
+2.97 made compat to dll
+changes to rtm display
+
+2.96 made compat to dll
+
+2.95 made compat to dll
+
+2.94
+made compatible to dll
+
+2.93
+added version info for mouseover exe
+limited mapinfo display to 10,000 items for wrps (released to sb)
+
+2.91
+made compatible to dll
+allowed unbinarised pbo's to be made (via option)
+added ifa (pbo) support
+2.90
+more type52 support
+2.89
+Type 52 p3d TOH support
+
+2.88
+supplied decoded information for texheaders.bin
+stopped potential crashes on dewrp displays and showed some reaction for all button displays
+
+2.87
+extract rvmats for p3d
+visual graphics for wrp files
+
+2.86
+updated to dll
+improved odol and wrp decoding
+recogise 1wvr wrps (ofp demo and virtual reality releases)
+more fixups to dep3d
+
+2.85
+substantial improvements to odol display
+
+2.84
+altered default options panel to reflect typical arma settings
+
+2.83 made compatible to latest dll
+2.82
+added rapify context switch
+
+2.81
+made compat to dll
+2.80
+corrected sp3x/p3d decode
+2.79
+
+now handles odolv49 and 50
+
+2.78
+arma3 p3d detection
+
+2.76 made compat to dll
+2.75
+
+a maintenence release to make compatible to dll, plus vastly improved p3d decoding
+
+
+2.73
+added output folder option to makepbo
+
+
+-----
+added dlg option to -GS makepbo, deprecated some useless stuff
+
+
+Note that this exe requires DePbo.dll and is NOT supplied in this package
+
+runtime libraries are NOT supplied in this package.
+
+if you're running win7 or XP 64 you *probably* need
+
+http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displaylang=en
+
+alternively you can download vcredist_x86.exe from dev-heaven
+
+
+--------------------------------
+Minimum level of the dll is 2.90
+--------------------------------
+
+originally designed to assist with Flashpoint : Elite
+
+place the dll in your windows/system folder, or in same folder as the gui
+
+place the gui anywhere that gives you a thrill
+
+fixes
+2.65 made compatible to dll
+added vbs2 lite us functionality
+
+2.64
+added vbs2 lite functionality (use options panel)
+note that encryption required for xbo's versus mission pbo's is autodetected
+
+2.63
+made compat. improved pbo extraction etc.
+
+2.61
+made compat
+2.60
+made compat
+2.58
+made compat to dll and improved pew gui
+
+2.57
+few minor improvements to pew display
+update to dll
+
+2.56
+oprw fixed class and model tree display
+a little bit of pew cleanup
+made compatible to latest dll
+2.55
+added lint/rap option e severe to check for filenames exist
+fixed potential crash on string exceeded
+allowed any sort of file to be lintchecked
+changed ouput display to unconditioanall show output on a lintheck (rather than only on errrors)
+
+2.54a
+(a) supplied missing documentation
+made compat to dll
+fixed %20 path issues
+now lintchecks bikb fsb and bifsm files
+
+2.53
+compatible with 2.42 dll
+imrovements to refrehs folder when deleting and renaming
+removed force amra option on lint, now automatic if arma/xbox
+
+2.52
+made compatible to latest dll 
+2.51
+made compatible to latest dll 
+2.50
+made compatible to latest dll (removed desqs processing)
+2.49
+hopefully stopped gui crash on Vista Help->about->depbo
+
+2.48
+made compatible to 2.29 dll
+changed pew gui display
+2.47
+fixed opening with *via total commander (eg) to display file again.
+removed floppy drive scan
+2.46
+made compatible to latest dll
+2.44
+made compatible to latest dll
+
+2.43
+made compatible to latest dll
+added armasave files as lintable
+2.42
+made compatible to latest dll
+improved pew readout
+enjoy
+2.41
+a resyncing version to make compatible to dll 2.12
+2.40
+added arma2 rtm binaries
+2.39
+added opption to ignore hard includes when making a pbo/ lintchecking
+
+2.38
+accounted for type 47 p3d's
+
+2.37
+made cfg lintable
+
+2.36
+added support for odol type vbs2 and v43
+2.35
+added p3d verify check
+improved p3d listing panel for odol
+fixed wrp listing (roads and models) for arma2
+fixed error in converting wrp to 4wvr
+
+2.34
+displayed new arma wrps and p3d's
+
+2.33 
+made compatible to arma2 wrp cracking
+fixes
+2.32
+fixed lack of C: directory on  some machines
+allowed lintechecking on various more file formats (fsm eg)
+
+2.31
+made conpatible to dll for arma2
+
+2.30
+cleaned up p3d screen
+used dll modelcfg
+added default path listing for mlod sp3x's
+changed wording of arma prefix in options
+generally cleaned up that panel
+
+2.29
+primarily added model.cfg's to warp files and cleaned up p3d and wrp screens
+
+2.28
+added rapify options such as force arma and lintcheck commas
+minimum DLL level is 1.77
+
+2.27 INTERIM RELEASE FOR CWR CREW
+
+2.23 a resync version
+2.22
+prevented a bisig if not needed
+included rvmat in lint-checkability
+accounted for new depbo to fix undef among other thingz
+
+2.21
+added callback printout for lintcheck
+2.20
+2.19 added prefix filepath string 
+added write hash and write profile
+2.18 fixed ignoreselection for arma pbo creation
+2.17
+fixed impromper drive address [:
+incorporated changes to depbo.dll (delete correction)
+began beta release of SqfSqs checker (alpha state)
+2.16
+internal release for Q at WGL (patchpbo) and Sy 
+2.15
+general release of improved DePboDll incorporating delete class for rapify
+fixes @ 2.14
+changed depob dll
+fixes at 2.13
+improved depbo.dll
+fixes at 2.12
+no longer includes hidden or sytem files
+fixes at 2.11
+changed product header to repeatedly read until zero string (flea style pbo's)
+Fixes at 2.10
+increased quote buffer to prevent crashing
+added armed assault type 4 special empty class entry (formerly extern)
+fixed quoted string error
+Fixes at 2.09 
+allowed wav files
+fixed potential error msg for wrp files
+
+Fixes at 2.08
+accepted #include "directFilename" // description.ext
+normally, the pbo name is required (addons)
+fixed bad string encoding where "0123456" was misinterpreted as an integer
+
+Fixes at 2.07
+public release of 2.06
+
+Decoding of p3d and wrp files remains unreliable.
+
+Fixes at 2.06
+early DEBUG beta release to phaedor/planck/hoz
+added *.cfg to list of potentially raPified files
+ditto rvmat and bisurf and  bimpas files
+
+Fixes at 2.05
+beta release only to Hoz/Planck
+decodes wrp
+new option to force a prefix to arma/elite. Eliteness already handles 'official' addons.
+
+
+Fixes at 2.04
+AutoRapify only created old style binaries.
+Added Arma/Elite residual bytes to pbos
+decodes rvmat fsm rtm and paa files
+checks rtm and paa for construction errors
+
+Fixes at 2.03
+Fixed crash on depbo of coldwar style resistance headers
+added more info for $prefix$
+
+Fixes at 2.02
+Improved #include parser
+add functionality (autolint etc)
+
+Fixes at 2.01
+removed the #define ENHANCED keyword
+replaced the XBOX and ARMA keywords with _ARMA_ and _XBOX_ respectively.
+Restored used of #define instead of #pragma for these keywords.

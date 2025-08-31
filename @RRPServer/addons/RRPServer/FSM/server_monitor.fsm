@@ -1,0 +1,274 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, Server Monitor">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Updata_Gov_INFO",4,218,711.922668,-250.695053,811.922729,-200.695267,2.000000,"Updata Gov" \n "INFO"};
+item1[] = {"Init",0,250,615.956909,-583.325317,715.956909,-533.325317,0.000000,"Init"};
+item2[] = {"_",8,218,615.533142,-482.307281,715.533203,-432.307343,0.000000,""};
+item3[] = {"Process",2,250,599.034973,-360.413605,732.423462,-276.071228,0.000000,"Process"};
+item4[] = {"Cleanup_Dealer",4,218,462.848694,-300.630890,562.848633,-250.630859,8.000000,"Cleanup" \n "Dealer"};
+item5[] = {"Cleanup_Handler",4,218,497.664673,-451.445496,597.664856,-401.445496,8.000000,"Cleanup" \n "Handler"};
+item6[] = {"Cleanup",4,218,442.386353,-376.868225,542.386047,-326.868225,8.000000,"Cleanup"};
+item7[] = {"Cleanup_dead_not",4,4314,557.123352,-248.630005,699.638855,-182.935516,0.000000,"Cleanup dead not player"};
+item8[] = {"Delete_non_active",4,218,754.502258,-360.434845,897.923767,-301.849213,0.000000,"Delete non-active " \n "vehicles" \n ""};
+link0[] = {0,3};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {3,0};
+link4[] = {3,4};
+link5[] = {3,5};
+link6[] = {3,6};
+link7[] = {3,7};
+link8[] = {3,8};
+link9[] = {4,3};
+link10[] = {5,3};
+link11[] = {6,3};
+link12[] = {7,3};
+link13[] = {8,3};
+globals[] = {0.000000,0,0,0,0,640,480,1,15,6316128,1,444.428558,929.447388,67.698608,-768.796570,1410,1804,1};
+window[] = {2,-1,-1,-1,-1,956,196,1488,196,3,1445};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "Server Monitor";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"diag_log ""Loaded Server FSM"";" \n
+                         "" \n
+                         "private _oldFPS = -1;" \n
+                         "life_diag_fps = -1;" \n
+                         "private _serverFPSCheckFine = true;" \n
+                         "private _serverFpsTime = diag_tickTime;" \n
+                         "" \n
+                         "private [""_GetPrices"",""_GetGovInfo""];" \n
+                         "" \n
+                         "private _GovTimeUpdata = diag_tickTime;" \n
+                         "private _PriceTimeUpdata = diag_tickTime;" \n
+                         "private _cleanupItems = [];" \n
+                         "private _lastObjectCleanup = diag_tickTime;" \n
+                         "private _lastObjectCleanup1 = diag_tickTime;" \n
+                         "private _lastDealerCleanup = diag_tickTime;" \n
+                         "private _lastCleanupDeadUnits = diag_tickTime;" \n
+                         "private _lastCleanupVehicle = diag_tickTime;" \n
+                         "" \n
+                         "_cleanIt = {" \n
+                         "	if !(isNull _this) then {" \n
+                         "		_lastCheck = _this getVariable ""LAST_CHECK"";" \n
+                         "		if (isNil ""_lastCheck"") then {" \n
+                         "			_this setVariable[""LAST_CHECK"", diag_tickTime];" \n
+                         "			_lastCheck = diag_tickTime;" \n
+                         "		};" \n
+                         "		if (diag_tickTime - _lastCheck > 180) then {" \n
+                         "			_list = _this nearEntities[[""I_Medic_F"", ""B_Range_Master_F"", ""C_man_1"", ""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 45];" \n
+                         "			if ({ isPlayer _x }count _list == 0) then {" \n
+                         "				_this setVariable [""LAST_CHECK"",nil];" \n
+                         "				diag_log format[""DEBUG: _cleanIT del %1"", _this];" \n
+                         "				deleteVehicle _this;" \n
+                         "" \n
+                         "			};" \n
+                         "		};" \n
+                         "	};" \n
+                         "};" \n
+                         "" \n
+                         "_cleanIt2 = {" \n
+                         "	if !(isNull _this) then {" \n
+                         "		_removed = false;" \n
+                         "		_lastCheck = _this getVariable ""LAST_CHECK"";" \n
+                         "		if (isNil ""_lastCheck"") then {" \n
+                         "			_this setVariable[""LAST_CHECK"", diag_tickTime];" \n
+                         "			_lastCheck = diag_tickTime;" \n
+                         "		};" \n
+                         "		if (diag_tickTime - _lastCheck > 180) then {" \n
+                         "			_list = _this nearEntities[[""I_Medic_F"", ""B_Range_Master_F"", ""C_man_1"", ""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 45];" \n
+                         "			if ({ isPlayer _x }count _list == 0) then {" \n
+                         "				{" \n
+                         "					deleteVehicle _x;" \n
+                         "				}forEach nearestObjects[_this, [""WeaponHolder""], 2];" \n
+                         "				_this setVariable [""LAST_CHECK"",nil];" \n
+                         "				diag_log format[""DEBUG: _cleanIT2 del %1"", _this];" \n
+                         "				deleteVehicle _this;" \n
+                         "				_removed = true;" \n
+                         "			};" \n
+                         "		};" \n
+                         "		if !(_removed) then {" \n
+                         "			life_cleanupQueue pushBack _this;" \n
+                         "		};" \n
+                         "	};" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Process">*/
+                class Process
+                {
+                        name = "Process";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Cleanup_Dealer">*/
+                                class Cleanup_Dealer
+                                {
+                                        itemno = 4;
+                                        priority = 8.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastDealerCleanup) > (30 * 60))"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_lastDealerCleanup = diag_tickTime;" \n
+                                         "" \n
+                                         "{" \n
+                                         "    if (isNull _x) then {" \n
+                                         "        diag_log format[""life_server init.sqf - Dealer_%1 is objNull - mission runtime %2"",_forEachIndex + 1,time];" \n
+                                         "    } else {" \n
+                                         "        _x setVariable [""sellers"",[],true];" \n
+                                         "    };" \n
+                                         "} forEach [" \n
+                                         "   missionNameSpace getVariable [""Dealer_1"",objNull]," \n
+                                         "   missionNameSpace getVariable [""Dealer_2"",objNull]," \n
+                                         "   missionNameSpace getVariable [""Dealer_3"",objNull]" \n
+                                         "];"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Cleanup_Handler">*/
+                                class Cleanup_Handler
+                                {
+                                        itemno = 5;
+                                        priority = 8.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastObjectCleanup) > 300)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_lastObjectCleanup = diag_tickTime;" \n
+                                         "" \n
+                                         "call RRPServer_garbageCollector_GroundWeaponHolder;" \n
+                                         "call RRPServer_garbageCollector_WeaponHolderSimulated;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Cleanup">*/
+                                class Cleanup
+                                {
+                                        itemno = 6;
+                                        priority = 8.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastObjectCleanup1) > 30)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_lastObjectCleanup1 = diag_tickTime;" \n
+                                         "" \n
+                                         "if !(_cleanupItems isEqualTo []) then {" \n
+                                         "	(_cleanupItems deleteAt 0) call _cleanIt;" \n
+                                         "};" \n
+                                         "" \n
+                                         "if !(life_cleanupQueue isEqualTo []) then {" \n
+                                         "	(life_cleanupQueue deleteAt 0) call _cleanIt2;" \n
+                                         "};"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Updata_Gov_INFO">*/
+                                class Updata_Gov_INFO
+                                {
+                                        itemno = 0;
+                                        priority = 2.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _GovTimeUpdata) > (30*60))"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_GovTimeUpdata = diag_tickTime;" \n
+                                         "" \n
+                                         "_GetGovInfo = ""updateGovInfo""  call RRPServer_DB_selectFull;" \n
+                                         "" \n
+                                         "{" \n
+                                         "	missionNamespace setVariable [""server_bank"",parseNumber(_x select 0),true];" \n
+                                         "	missionNamespace setVariable [""server_tax"",_x select 1,true];" \n
+                                         "	missionNamespace setVariable [""server_creditTax"",_x select 2,true];" \n
+                                         "	missionNamespace setVariable [""server_mar_legal"",([_x select 3] call RRPServer_util_tinyIntConverter),true];" \n
+                                         "	missionNamespace setVariable [""server_slavery"",([_x select 4] call RRPServer_util_tinyIntConverter),true];" \n
+                                         "	missionNamespace setVariable [""server_poor"",parseNumber(_x select 5),true];" \n
+                                         "} forEach _GetGovInfo;" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Delete_non_active">*/
+                                class Delete_non_active
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastCleanupVehicle) > (250 * 60))"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"/*" \n
+                                         "private _lastCleanupVehicle = diag_tickTime;" \n
+                                         "{" \n
+                                         "	_vehicle = _x;" \n
+                                         "	if !(isNull _vehicle) then" \n
+                                         "	{	" \n
+                                         "	_nonActiveTime = _vehicle getVariable ""NotActiveVeh"";" \n
+                                         "		if !(isNil ""_nonActiveTime"") then" \n
+                                         "		{" \n
+                                         "			if ((time - _nonActiveTime) > (15 * 60)) then" \n
+                                         "			{" \n
+                                         "				_dbInfo = _vehicle getVariable [""dbInfo"",[]];" \n
+                                         "				if !(_dbInfo isEqualTo []) then" \n
+                                         "				{" \n
+                                         "					_uid = _dbInfo select 0;" \n
+                                         "					_plate = _dbInfo select 1;" \n
+                                         "					_trunk = _vehicle getVariable [""trunk"",[]];" \n
+                                         "					//_iItems = _vehicle call DayMneInventar!;" \n
+                                         "					format [""deleteVehicleCleanup:%1:%2"",_uid,_plate] call RRPServer_DB_fireAndForget;" \n
+                                         "					format [""Deleted not actual vehicle netID: %1"",netId _vehicle] call RRPServer_util_log;" \n
+                                         "					deleteVehicle _vehicle;" \n
+                                         "				};" \n
+                                         "			};" \n
+                                         "		};" \n
+                                         "	};" \n
+                                         "}forEach allMissionObjects ""Car"";" \n
+                                         "*/"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Cleanup_dead_not">*/
+                                class Cleanup_dead_not
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastCleanupDeadUnits) > (10 * 60))"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_lastCleanupDeadUnits = diag_tickTime;" \n
+                                         "" \n
+                                         "{" \n
+                                         "" \n
+                                         "	if !(isPlayer _x) then " \n
+                                         "	{" \n
+                                         "		deleteVehicle _x;" \n
+                                         "	};" \n
+                                         "" \n
+                                         "}forEach allDead;" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+        };
+};
+/*%FSM</COMPILE>*/

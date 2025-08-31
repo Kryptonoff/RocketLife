@@ -1,0 +1,20 @@
+Массив RRPClientGroupInfo
+RRPClientGroupInfo params [
+        _name,		            //Название 
+		_leader,                // UID лидера
+		_deputys,	             //Замы
+		_slots,	                //Слоты
+		_premialVar,            //Переменная организации
+		_titles,                //Звания
+		_tfar,	                //Частоты TFAR
+		_bank,                  //Общак
+		_massage_day,           //Сообщение дня
+		_groupMembers,          //Члены организации [uid,name]
+		_markers,               //Маркеры
+		_polys,                 //Линии
+		_side					//
+	];
+
+Утилиты:
+   call RRPClient_groups_util_allowRevive - вернет bool, может ли возраждать на койке
+   "tfarChange" call RRPClient_groups_util_permCheck - вернет bool, проверяет есть ли разрешение на то или иное действие

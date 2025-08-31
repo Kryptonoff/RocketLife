@@ -1,0 +1,12 @@
+private["_display","_listbox","_index","_data","_id"];
+disableSerialization;
+_display = uiNamespace getVariable ["RscExileLifeSettings",displayNull];
+_listbox = _display displayCtrl 23108;
+RRPClientKeybindLastSelected = _listbox lbTextRight (lbCurSel _listbox);
+_index = lbCurSel _listbox;
+_data = _listbox lbData _index;
+_id = (_data splitString "|") select 1;
+_listbox lbSetTextRight [_index,"Нажмите ESC для отмены..."];
+_listbox ctrlEnable false;
+RRPClientKeybindWaitingForKeypress = true;
+RRPClientKeybindModifingID = _id;

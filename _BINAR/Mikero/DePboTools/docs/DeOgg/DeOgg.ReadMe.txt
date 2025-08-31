@@ -1,0 +1,16 @@
+from mikero@norfolk.nf
+
+Deogg.dll is a support dll to depbo.dll it has been introduced as a hopefully one-off to
+reduce the payload of the main dll by more than 1 meg
+
+
+Installation:
+
+Automatic:
+
+The dll comes with it's own self installer which will automatically put it in the same folder as the family of exe's that depend on this dll for their livelihood. 
+
+c:\program files (x86)\Mikero\DePboTools\bin
+
+There is no requirement for this dll to be global (eg system32), if all exe's use their auto installer.
+

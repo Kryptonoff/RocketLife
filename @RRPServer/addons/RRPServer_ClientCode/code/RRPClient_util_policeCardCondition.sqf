@@ -1,0 +1,1 @@
+("Oase_ID_Card_Police" in assignedItems player) && {player call getSide isEqualTo 'cop' || ["cop"] call RRPClient_system_playerCount > 3}

@@ -1,0 +1,567 @@
+#include "configurs\config_ltds.hpp"
+#include "configurs\config_tablet.hpp"
+#include "configurs\config_charCreate.hpp"
+#include "configurs\config_anims.hpp"
+#include "configurs\config_poses.hpp"
+#include "configurs\Config_Poker.hpp"
+#include "configurs\config_daily.hpp"
+#include "configurs\football.hpp"
+#include "configurs\config_exam.hpp"
+#include "configurs\config_car2go.hpp"
+#include "configurs\CfgDon.hpp"
+#include "configurs\CfgPerks.hpp"
+#include "configurs\config_settings.hpp"
+#include "configurs\CfgLevelling.hpp"
+
+serverip = "78.46.88.3";
+serverPort = "2302";
+serverPassword = "";
+restartTimeOut = 260;
+unixTime = __TIMESTAMP_UTC__;
+
+author = "Rocket Life";
+onLoadName = "Rocket Life";
+onLoadMission = "Приятной Игры";
+LoadScreen  = "\rimas_agent\assets\mission_pic.paa";
+unsafeCVL = 1;
+joinUnassigned = 1;
+saving = 0;
+disabledAI = 1;
+disableChannels[]={{0,1,1},{1,1,1},{2,1,1},{3,1,1},{4,1,1},{5,1,1},{6,1,1}};
+enableDebugConsole[] = {"76561198055124016","76561198090549826", "76561198108509544", "76561198006439083"};
+__EXEC(profVars = allVariables profileNamespace)
+disableRandomization[] = {"air_f"};
+onPauseScript[] = {"RRPClient_system_escInterupt"};
+skipLobby = 1;
+showGroupIndicator = 0;
+forceRotorLibSimulation = 0;
+
+respawn = 3;
+respawndelay = 0;
+respawnDialog = 0;
+respawnButton = 0;
+respawnTemplates[] = {};
+
+class Header {
+	gameType = RPG;
+	minPlayers = 1;
+	maxPlayers = 155;
+};
+#include "maverick\maverick_master.cpp"
+showHUD[] = {
+	1,	// Scripted HUD (same as showHUD command)
+	1,	// Vehicle + soldier info
+	0,	// Vehicle radar [HIDDEN]
+	0,	// Vehicle compass [HIDDEN]
+	0,	// Tank direction indicator
+	0,	// Commanding menu
+	0,	// Group Bar
+	1	// HUD Weapon Cursors
+};
+
+
+corpseManagerMode = 0;
+wreckManagerMode = 0;
+
+#include "config\Config_Master.hpp"
+#include "dialog\MasterHandler.h"
+#include "infiSTAR_AdminMenu.hpp"
+class RscTitles
+{
+	#include "dialog\partyMeatHUD.hpp"
+	#include "dialog\titles_roulette.hpp"
+	#include "dialog\id.hpp"
+	#include "dialog\ui.hpp"
+	#include "dialog\deathScreenV2.h"
+	#include "dialog\progress.hpp"
+	#include "dialog\hud_nameTags.h"
+	#include "dialog\mouseTarget.h"
+	#include "dialog\RscTitles.hpp"
+	#include "maverick\maverick_titles_master.cpp"
+	#include "dialog\TimerProgresBar.h"
+	#include "dialog\combineTrunk.hpp"
+	#include "dialog\hud.hpp"
+	#include "dialog\UseItemsUI.h"
+	#include "dialog\detector.hpp"
+	#include "dialog\hud_lockpick.hpp"
+
+	class RscCarBombCountDownTimer
+	{
+		idd=37898;
+		duration=999999;
+		fadein=1;
+		fadeout=1;
+		onLoad="uiNamespace setVariable ['RscCarBombCountDownTimer', _this select 0];";
+		onUnload="uiNamespace setVariable ['RscCarBombCountDownTimer', displayNull]";
+		class controls
+		{
+			class TimeBackground: RscText
+			{
+				idc=7980;
+				x="safeZoneX + safeZoneW * 0.5 - 45 * pixelW";
+				y="safezoneY + (30+70+5) * pixelH";
+				w="90 * pixelW";
+				h="25 * pixelH";
+				colorBackground[]={0.074509799,0.086274497,0.105882,0.80000001};
+			};
+			class TimeValue: RscStructuredText
+			{
+				idc=7981;
+				text="<t align='center' size='0.7' color='#ffffff' shadow='false' font='RobotoCondensed'>00.000</t>";
+				x="safeZoneX + safeZoneW * 0.5 - 45 * pixelW";
+				y="safezoneY + (30+70+5+5) * pixelH";
+				w="90 * pixelW";
+				h="25 * pixelH";
+				colorBackground[]={0,0,0,0};
+			};
+		};
+	};
+};
+
+/*
+    COMMANDS: ALLVARIABLES
+*/
+
+class CfgDisabledCommands
+{
+    class ALLVARIABLES
+    {
+        class SYNTAX1
+        {
+            targets[] = {1,1,1};
+            args[] = {{},{"CONTROL"}};
+        };
+
+        class SYNTAX2
+        {
+            targets[] = {1,1,1};
+            args[] = {{},{"DISPLAY"}};
+        };
+
+        class SYNTAX3
+        {
+            targets[] = {1,1,1};
+            args[] = {{},{"TEAM_MEMBER"}};
+        };
+
+        class SYNTAX4
+        {
+            targets[] = {1,1,1};
+            args[] = {{},{"NAMESPACE"}};
+        };
+
+        class SYNTAX5
+        {
+            targets[] = {1,1,1};
+            args[] = {{},{"OBJECT"}};
+        };
+
+        class SYNTAX6
+        {
+            targets[] = {1,1,1};
+            args[] = {{},{"GROUP"}};
+        };
+
+        class SYNTAX7
+        {
+            targets[] = {1,1,1};
+            args[] = {{},{"TASK"}};
+        };
+
+        class SYNTAX8
+        {
+            targets[] = {1,1,1};
+            args[] = {{},{"LOCATION"}};
+        };
+    };
+};
+
+class CfgFunctions
+{
+	class Bootstrap
+	{
+		class Functions
+		{
+			file = "bootstrap";
+			class preInit {preInit = 1;};
+			class postInit {postInit = 1;};
+		};
+	};
+	#include "maverick\maverick_functions_master.cpp"
+};
+
+class CfgDebriefing
+{
+	class CopEnd
+	{
+		title = "Вы были уволены!";
+		subtitle = "Удачи вам!";
+		description = "Вы были уволены из полицейского департамента, удачи на гражданке!";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class MedEnd
+	{
+		title = "Вы были уволены!";
+		subtitle = "Удачи вам!";
+		description = "Вы были уволены из медицинского департамента, удачи на гражданке!";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class CopStart
+	{
+		title = "Вступление в полицию";
+		subtitle = "Добро пожаловать, кадет!";
+		description = "Вы были приняты в полицейский департамент. Вам необходимо зайти за синию сторону(слот)!";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class RebStart
+	{
+		title = "Вы, повстанец!";
+		subtitle = "Добро пожаловать в ряды повстанец";
+		description = "Перезайдите на зеленый слот в лобби!";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class civStart
+	{
+		title = "Вы, гражданский!";
+		subtitle = "У вас теперь есть гражданский паспорт";
+		description = "Перезайдите на фиолетовый слот в лобби!";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class ChangeName
+	{
+		title = "Вы изменили свое имя!";
+		subtitle = "Спасибо за поддержку сервера";
+		description = "Пожалуйста, измените Ваш профиль в настройках игры, на тот который вы указали!";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class KickFromRebSide
+	{
+		title = "Вас изгнали";
+		subtitle = "Вас изгнали из повстанческого ополчения";
+		description = "Теперь вы снова гражданский. Перезайдите на сервер!";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class MedStart
+	{
+		title = "Вступление в медики";
+		subtitle = "Добро пожаловать, интерн!";
+		description = "Вы были приняты в медицинский департамент. Вам необходимо зайти за красную сторону(слот)!";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class TaskForce
+	{
+		title = "Ошибка";
+		subtitle = "Вы были исключены из игры";
+		description = "Для игры на сервере Rocket Life необходимо настроить TeamSpeak 3 и мод Task Force Arma 3. Во время игры вы должны находиться на нашем TeamSpeak сервере, в соответствующем канале.";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class Aborted
+	{
+		title = "Выход из игры";
+		subtitle = "Вы вышли с сервера.";
+		description = "Ваши данные были сохранены на сервере.";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class NotWhitelistedReb
+	{
+		title = "Ошибка";
+		subtitle = "Вы не можете занимать Революционный слот";
+		description = "Вы не можете играть за фракцию Революционеров, так как не вступили в ряды сопротивления. Зайдите за гражданский слот и завербуйтесь на Столице Революционеров.";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class NotWhitelistedCiv
+	{
+		title = "Ошибка";
+		subtitle = "Вы не можете занимать гражданский слот";
+		description = "Вы не можете играть за фракцию гражданских, так как вступили в ряды сопротивления. Зайдите за Революционный слот и купите паспорт в посольстве.";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class NotYouServerMap_Altis
+	{
+		title = "Ошибка";
+		subtitle = "Закрепление на другом острове";
+		description = "Вы закреплены на острове Altis. Чтобы зайти на Tanoa вам неопходимо посетить офис туристической фирмы и оформить путевку";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class NotYouServerMap_Tanoa
+	{
+		title = "Ошибка";
+		subtitle = "Закрепление на другом острове";
+		description = "Вы закреплены на острове Tanoa. Чтобы зайти на Altis вам неопходимо посетить офис туристической фирмы и оформить путевку";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class SpyGlass
+	{
+		title = "The SpyGlass sees you";
+		subTitle = "You were detected by the SpyGlass";
+		description = "You were detected for cheating and have been reported to the server. Enjoy your day.";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class SpyGlassAddons
+	{
+		title = "The SpyGlass sees you";
+		subTitle = "You were detected by the SpyGlass";
+		description = "Ошибка инициализации аддонов! Попробуйте перезапустить клиент и проверить актуальная ли версия мода у вас установлена.";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class SpyGlassAddonsMissed
+	{
+		title = "Ошибка";
+		subTitle = "Проблема с файлами";
+		description = "У вас отсутствуют необходимые файлы или присутствуют лишние! Убедитесь, что у вас установлена последняя версия и включен мод Rocket Life";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class SpyGlassAddonsMissed_RetHwid
+	{
+		title = "Ошибка";
+		subTitle = "Проблема с файлами";
+		description = "У вас отсутствуют необходимые файлы или присутствуют лишние! Убедитесь, что у вас установлена последняя версия и включен мод Rocket Life (h)";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class SpyGlassAddonsMissed_rrpExt
+	{
+		title = "Ошибка";
+		subTitle = "Проблема с файлами";
+		description = "У вас отсутствуют необходимые файлы или присутствуют лишние! Убедитесь, что у вас установлена последняя версия и включен мод Rocket Life (r)";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class SpyGlassAddonsMissed_sharplib
+	{
+		title = "Ошибка";
+		subTitle = "Проблема с файлами";
+		description = "У вас отсутствуют необходимые файлы или присутствуют лишние! Убедитесь, что у вас установлена последняя версия и включен мод Rocket Life (s)";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class SpyGlassAddonsNotWhite
+	{
+		title = "Ошибка";
+		subTitle = "Проблема с файлами";
+		description = "У вас есть лишние файлы. Убедитесь, что у вас установлена последняя версия мода Rocket Life и не включены сторонние моды.";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class SpyGlassAddonsVersion
+	{
+		title = "The SpyGlass sees you";
+		subTitle = "You were detected by the SpyGlass";
+		description = "У вас устаревшая версия мода Rocket Life! Проверьте наличие обновлений через Steam Workshop!";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class NameExists
+	{
+		title = "Изменение имени";
+		subTitle = "";
+		description = "За вашим PID закреплёно другое имя, которое вы можете посмотреть в личном кабинете lk.rocket-rp.fun. Измените имя в профиле ArmA на то, что указано в личном кабинете!";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class WrongServer
+	{
+		title = "Смена сервера";
+		subTitle = "";
+		description = "Вы уже закреплены на одном из наших серверов и не сможете сменить его до следующего рестарта. Вам придется подождать или вы можете вернуться и играть на предыдущем сервере";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class NameAlreadyInBasa
+	{
+		title = "Имя занято";
+		subTitle = "";
+		description = "На острове уже есть житель с таким же именем. Измените его в своем профиле на уникальное";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class BadProfileName
+	{
+		title = "Недопустимое имя";
+		subTitle = "";
+		description = "Имя персонажа содержит кириллицу, цифры, недопустимые символы, двойной пробел или пробел в конце! Имя может содержать только латинские буквы от A до Z и пробелы!";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class BadProfileName2
+	{
+		title = "Недопустимое имя";
+		subTitle = "";
+		description = "Имя персонажа должно быть в формате Имя Фамилия! Наприм. John Malcovich";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class Banned
+	{
+		title = "BANNED";
+		subTitle = "";
+		description = "У вас бан на сервере Rocket Life. Подробнее о причинах бана и его сроке вы можете узнать в личном кабинете: lk.rocket-rp.fun";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class FOV
+	{
+		title = "FOV";
+		subTitle = "";
+		description = "Верните FOV в стандартное значение 0.75! Разрешенный диапазон FOV от 0.65 до 0.85";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class WrongDir
+	{
+		title = "Ошибка загрузки";
+		subTitle = "";
+		description = "Невозможно загрузить расширения! Возможно путь установки игры содержит кириллические символы.";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+	class EULA
+	{
+		title = "Ошибка";
+		subtitle = "EULA";
+		description = "К сожалению, вы не приняли пользовательское соглашение, возвращайтесь когда передумаете :)";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0,0.3,0.6,1};
+	};
+};
+
+class CfgNotifications
+{
+	class MedicalRequestEmerg
+	{
+		title = "EMS Requested";
+		iconPicture = "\A3\ui_f\data\map\mapcontrol\taskIcon_ca.paa";
+		description = "%1";
+		duration = 5;
+		priority = 7;
+	};
+
+	class DeliveryAssigned
+	{
+		title = "Delivery Job Accepted";
+		iconPicture = "\A3\ui_f\data\map\mapcontrol\taskIcon_ca.paa";
+		description = "%1";
+		duration = 10;
+		priority = 7;
+	};
+
+	class DeliveryFailed
+	{
+		title = "Delivery Job Failed";
+		iconPicture = "\A3\ui_f\data\map\mapcontrol\taskiconfailed_ca.paa";
+		description = "%1";
+		duration = 7;
+		priority = 7;
+	};
+
+	class DeliverySucceeded
+	{
+		title = "Delivery Job Completed";
+		iconPicture = "\A3\ui_f\data\map\mapcontrol\taskIcondone_ca.paa";
+		description = "%1";
+		duration = 6;
+		priority = 6;
+	};
+
+	class TextMessage
+	{
+		title = "Received A Text Message";
+		iconPicture = "\rimas_pack\icons\messagenew.paa";
+		description = "%1";
+		duration = 10;
+		priority = 6;
+	};
+
+	class PoliceDispatch
+	{
+		title = "Police Message";
+		iconPicture = "\rimas_pack\icons\messagepolice.paa";
+		description = "%1";
+		duration = 10;
+		priority = 6;
+	};
+
+	class AdminDispatch
+	{
+		title = "Admin Dispatch Center";
+		iconPicture = "\rimas_pack\icons\messageadmin.paa";
+		description = "%1";
+		duration = 10;
+		priority = 6;
+	};
+
+	class AdminMessage
+	{
+		title = "Admin Message";
+		iconPicture = "\rimas_pack\icons\messageadmin.paa";
+		description = "%1";
+		duration = 10;
+		priority = 5;
+	};
+
+	class MedicMessage
+	{
+		title = "Medic Message";
+		iconPicture = "\rimas_pack\icons\messagepolice.paa";
+		description = "%1";
+		duration = 10;
+		priority = 6;
+	};
+
+	class TaxiMessage
+	{
+		title = "Taxi Dispatch Center";
+		iconPicture = "\rimas_pack\icons\messagenew.paa";
+		description = "%1";
+		duration = 10;
+		priority = 6;
+	};
+};

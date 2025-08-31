@@ -1,0 +1,1 @@
+count RRPClientGroupInfo isNotEqualTo 0

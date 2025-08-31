@@ -1,0 +1,1 @@
+((player getVariable ["rrpvar_questsList",[]]) select _this) isEqualTo 0

@@ -1,0 +1,15 @@
+fixes
+1.40
+now debinarises ANY model that contains snap points
+fixed error in offsets for type 70's
+1.30
+now converts type 70's
+
+1.20
+now sweeps child folders. not just the primary, thus
+
+deroad p:\a3\roads_f will work as intended
+
+version 1.10
+
+initial release

@@ -1,0 +1,43 @@
+[
+	"RRPClient_party_openSlide",
+	"RRPClient_party_acceptInvite",
+	"RRPClient_party_changeFreq",
+	"RRPClient_party_changeMode",
+	"RRPClient_party_create",
+	"RRPClient_party_disband",
+	"RRPClient_party_disbandPlz",
+	"RRPClient_party_giveLeader",
+	"RRPClient_party_hostMenu",
+	"RRPClient_party_inviteMe",
+	"RRPClient_party_inviteMenu",
+	"RRPClient_party_joinRequest",
+	"RRPClient_party_joinResponse",
+	"RRPClient_party_kick",
+	"RRPClient_party_kickMe",
+	"RRPClient_party_leave",
+	"RRPClient_party_onLbListParty",
+	"RRPClient_party_onLBPartyPlayers",
+	"RRPClient_party_openManage",
+	"RRPClient_party_pingActions",
+	"RRPClient_party_rejectInvite",
+	"RRPClient_party_requestInvite",
+	"RRPClient_party_createPanel",
+	"RRPClient_party_renderPartyPanel",
+	"RRPClient_party_destroyPanel",
+	"RRPClient_party_setPin",
+	"RRPClient_party_util_findNearUnits",
+	"RRPClient_party_util_getRoleInVehicle",
+	"RRPClient_party_util_getDamageInfo"
+]apply
+{
+  missionNamespace setVariable[_x, compile preprocessFileLineNumbers format["\RRPServer_Party\client\%1.sqf",_x],true];
+};
+
+[
+	"RRPServer_party_joinRequest",
+	"RRPServer_party_kickRequest",
+	"RRPServer_party_disbandRequest"
+]apply
+{
+  missionNamespace setVariable[_x, compile preprocessFileLineNumbers format["\RRPServer_Party\server\%1.sqf",_x]];
+};

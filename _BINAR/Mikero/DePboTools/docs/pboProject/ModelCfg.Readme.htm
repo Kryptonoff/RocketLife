@@ -1,0 +1,111 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-au">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>well here we are</title>
+</head>
+
+<body>
+
+<p><font face="Arial" size="5">model.cfg and inheritance.</font></p>
+
+<p><font face="Arial">Bis have an excellent document describing the <i>
+architecture</i> of model.cfg's</font></p>
+
+<p><font face="Arial">
+<a href="https://community.bistudio.com/wiki/Model_Config">
+https://community.bistudio.com/wiki/Model_Config</a></font></p>
+
+<p><font face="Arial">Note this describes the <i>architecture</i> .</font></p>
+
+<p><font face="Arial">At first glance, the <u>contents</u> of model.cfg's&nbsp; 
+appear to be nothing more than just another variation on config.cpp's and rvmats</font></p>
+
+<p><font face="Arial">There are subtle differences.</font></p>
+
+<ul>
+  <li><font face="Arial">The sqX language is inherent.</font></li>
+</ul>
+
+<p><font face="Arial">In any other parmfile you&nbsp; need to use __EVAL and 
+__EXEC to produce constants for sqx verbs.</font></p>
+
+<p><font face="Arial">example:</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp;&nbsp; degrees=__EVAL(rad 90);&nbsp;&nbsp;&nbsp; 
+// in a config.cpp</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp;&nbsp; angle=rad 90; // in a model.cfg<br>
+&nbsp;&nbsp;&nbsp; angle=-rad 90;<br>
+&nbsp;&nbsp;&nbsp; angle=rad -90;</font></p>
+
+<p><font face="Arial">----</font></p>
+
+<ul>
+  <li><font face="Arial">true and false exist</font></li>
+</ul>
+
+<p><font face="Arial">because the sqx language is inherent, these to booleans 
+are pre-defined. In a config.cpp they are not hence.</font></p>
+
+<p><font face="Arial">#define true 1&nbsp;&nbsp;&nbsp; // an integer</font></p>
+
+<p><font face="Arial">#define false&nbsp; 0 // an integer</font></p>
+
+<p><font face="Arial"><span style="background-color: #FF0000">do not define them 
+in a model.cfg. They are <b><u>booleans</u></b> and the bis parser will not 
+understand what you did</span></font></p>
+
+<p><font face="Arial">----</font></p>
+
+<ul>
+  <li><font face="Arial"><span style="background-color: #00FF00">inheritance 
+  relies on model.cfgs in \parent\folders.</span></font></li>
+</ul>
+
+<p><font face="Arial">in config.cpp</font></p>
+
+<p><font face="Arial">class whatever;&nbsp; // simply tells the engine to look 
+for it in some other pbo.</font></p>
+
+<p><font face="Arial">in a model.cfg</font></p>
+
+<p><font face="Arial">class whatever; // tells <b>bis binarise</b> to look for 
+it right now in a parent\folder.</font></p>
+
+<p><font face="Arial">the rules are, this parent model.cfg&nbsp; must be named, 
+&quot;model.cfg&quot;</font></p>
+
+<p><font face="Arial">if the class is not <b>defined</b> in that model.cfg, it 
+will backtrack to the next parent.</font></p>
+
+<p><font face="Arial">and so on, all the way back to the root of the P drive 
+(this is the only time in all of bis tools where the root of P is insprected. 
+All other times, tools stop at Pdrive: myProject</font></p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial">Typical for bis, if it can't find this class it ignores 
+the problem.</font></p>
+
+<p><font face="Arial">Typical of pboProject, if it can't find the class, it 
+screams at you.</font></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+</body>
+
+</html>

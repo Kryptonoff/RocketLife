@@ -1,0 +1,24 @@
+tool supplied by Tim Dittmar
+
+contacts:
+
+	Skype:	brain01   (T_D)
+
+	email: T_Dittmar@web.de
+
+
+
+deroad converts any/all binarised models with snap points to plain jane for use in terrain builder and visitor
+
+
+usage:
+
+    DeRoad NameOf.p3d
+
+OR
+
+    DeRoad NameOfFolder
+
+
+
+requries  .net framework 4.5.1

@@ -1,0 +1,99 @@
+/**
+ * Imported by rrp_3den plugin
+ * Created by: FairyTale
+ */
+
+class ConfigNpc
+{
+	class TaxiKneel
+	{
+		objectClassName = "RRP_NPC_Talk";
+		objPosition[] = {{268.981, 30307.1, 3.00144},{0.0192587, -0.999815, 0},{0, 0, 1}};
+		animations[] = {"InBaseMoves_repairVehicleKnl"};
+		face = "TanoanHead_A3_07";
+		loadout[] = {{},{},{},{"Rimas_taxi",{}},{},{},"","",{},{"","","","","",""}};
+		name = "Патерсон Беннетт"; 
+		description = ""; 
+		startDialog = ""; 
+		icon = ""; 
+		condition = "true";
+	};
+	class TaxiGirl
+	{
+		objectClassName = "RRP_NPC_Talk";
+		objPosition[] = {{267.9, 30307.2, 3.00144},{0.971469, -0.237167, 0},{0, 0, 1}};
+		animations[] = {"HubStandingUC_idle1","HubStandingUC_idle2","HubStandingUC_idle3"};
+		face = "max_female10";
+		loadout[] = {{},{},{},{"Taxi_FEM4_1",{}},{},{},"","Taxi_SC2_CY2",{},{"","","","","",""}};
+		name = "Уильям Кларк"; 
+		description = ""; 
+		startDialog = ""; 
+		icon = ""; 
+		condition = "true";
+	};
+	class CopSpeaker
+	{
+		objectClassName = "RRP_NPC_Talk";
+		objPosition[] = {{270.797, 30304.9, 3.00144},{-0.997297, 0.073473, 0},{0, 0, 1}};
+		animations[] = {"AG_policeTablet_loop"};
+		face = "GreekHead_A3_13";
+		loadout[] = {{},{},{},{"pd_form_unif_CA",{}},{},{"pd_form_unif_bag_1",{}},"","",{"rrp_tablet","","","",{},{},""},{"","","","","",""}};
+		name = "Оливер Тэйлор"; 
+		description = ""; 
+		startDialog = ""; 
+		icon = ""; 
+		condition = "true";
+	};
+	class Speaker1
+	{
+		objectClassName = "RRP_NPC_Talk";
+		objPosition[] = {{279.752, 30300.5, 3.15852},{0.998128, -0.0611529, 0},{0, 0, 1}};
+		animations[] = {"AG_handOnChest_loop"};
+		face = "asczHead_redfield_A3";
+		loadout[] = {{},{},{},{"U_C_FormalSuit_01_blue_F",{}},{},{},"","EF_RG1",{},{"","","","","",""}};
+		name = "Самюэль Уилсон"; 
+		description = ""; 
+		startDialog = ""; 
+		icon = ""; 
+		condition = "true";
+	};
+	class GirlBandit
+	{
+		objectClassName = "RRP_NPC_Talk";
+		objPosition[] = {{269.416, 30300.7, 7.4183},{0.294472, 0.95566, 0},{0, 0, 1}};
+		animations[] = {"AG_pistolIdle_loop"};
+		face = "Fem_B2";
+		loadout[] = {{},{},{"Xnooz_AppareilPhoto","","","",{},{},""},{"EF_FEM_3_9B2",{}},{},{},"","",{"Laserdesignator_01_khk_F","","","",{},{},""},{"ItemMap","O_UavTerminal","tf_anprc154","","Sausages","EF_FemLGloves2VL_NV"}};
+		name = "Шон Дэвис"; 
+		description = ""; 
+		startDialog = ""; 
+		icon = ""; 
+		condition = "true";
+	};
+	class Speaker2
+	{
+		objectClassName = "RRP_NPC_Talk";
+		objPosition[] = {{280.963, 30300.4, 3.15969},{-0.999539, 0.030347, 0},{0, 0, 1}};
+		animations[] = {"AG_cigaretSmoke_loop"};
+		face = "WhiteHead_14";
+		loadout[] = {{},{},{},{"U_C_FormalSuit_01_tshirt_gray_F",{}},{},{},"","TRYK_Beard_BL4",{"rrp_sigaret","","","",{},{},""},{"","","","","",""}};
+		name = "Тайлер Мур"; 
+		description = ""; 
+		startDialog = ""; 
+		icon = ""; 
+		condition = "true";
+	};
+	class Speaker2_1
+	{
+		objectClassName = "RRP_NPC_Talk";
+		objPosition[] = {{268.1, 30301, 3.16054},{0.122839, 0.992427, 0},{0, 0, 1}};
+		animations[] = {"AG_wallLeaning_loop"};
+		face = "Fem_B2";
+		loadout[] = {{},{},{},{"EF_FEM_3_9W",{}},{},{},"","EF_SC_TTBRKF1",{},{"","","","","",""}};
+		name = "Реджи Андерсон"; 
+		description = ""; 
+		startDialog = ""; 
+		icon = ""; 
+		condition = "true";
+	};
+};

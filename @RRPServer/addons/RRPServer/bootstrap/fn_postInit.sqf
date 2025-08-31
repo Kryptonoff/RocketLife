@@ -1,0 +1,3 @@
+call RRPServer_system_postInit;
+call TFAR_fnc_TaskForceArrowheadRadioInit;
+true

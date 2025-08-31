@@ -1,0 +1,4 @@
+1.00
+first release
+
+deparate dll for ogg vorbis to reduce serious payload impact on the main dll

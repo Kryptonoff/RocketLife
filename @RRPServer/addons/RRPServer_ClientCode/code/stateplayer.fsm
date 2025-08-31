@@ -1,0 +1,114 @@
+/*%FSM<COMPILE "D:\SteamLibrary\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, StatePlayer">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"GasMask",4,4314,775.445190,-358.875397,875.445251,-308.875397,1.000000,"GasMask"};
+item1[] = {"Init",0,250,605.269897,-568.676086,705.269897,-518.676086,0.000000,"Init"};
+item2[] = {"_",8,218,606.323853,-489.460175,706.323853,-439.460175,0.000000,""};
+item3[] = {"Process",2,250,605.744873,-359.574860,705.744873,-309.574860,0.000000,"Process"};
+item4[] = {"stopFsm",4,218,459.265503,-360.746246,559.265442,-310.746246,6.000000,"stopFsm"};
+item5[] = {"End_FSM",1,250,313.467682,-361.145325,403.467804,-311.145325,0.000000,"End FSM"};
+link0[] = {0,3};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {3,0};
+link4[] = {3,4};
+link5[] = {4,5};
+globals[] = {0.000000,0,0,0,0,640,480,1,15,6316128,1,278.483154,940.582886,23.273804,-686.176086,825,884,1};
+window[] = {2,-1,-1,-1,-1,968,208,1500,208,3,843};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "StatePlayer";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"diag_log ""FSM-STATE START"";" \n
+                         "" \n
+                         "private _lastSync = diag_tickTime;" \n
+                         "stateFSM setFSMVariable [""stopfsm"",false];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Process">*/
+                class Process
+                {
+                        name = "Process";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "stopFsm">*/
+                                class stopFsm
+                                {
+                                        itemno = 4;
+                                        priority = 6.000000;
+                                        to="End_FSM";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"stateFSM getFSMVariable ""stopfsm"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"diag_log ""FSM-STATE END"";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "GasMask">*/
+                                class GasMask
+                                {
+                                        itemno = 0;
+                                        priority = 1.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(""Exile_Headgear_GasMask"" in (assignedItems player))"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"if !(ExileClientGasMaskVisible) then " \n
+                                         "	{" \n
+                                         "		true call ExileClient_gui_gasMask_toggle;" \n
+                                         "	};" \n
+                                         "	if (alive player) then " \n
+                                         "	{" \n
+                                         "		if (diag_tickTime >= ExileGasMaskNextSoundAt) then " \n
+                                         "		{" \n
+                                         "			playSound format [""Sound_GasMaskBreathing0%1"", 1 + (floor (random 2))];" \n
+                                         "			ExileGasMaskNextSoundAt = diag_tickTime + (2.2 + (random 1));" \n
+                                         "		};" \n
+                                         "	};"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "End_FSM">*/
+                class End_FSM
+                {
+                        name = "End_FSM";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "End_FSM",
+        };
+};
+/*%FSM</COMPILE>*/

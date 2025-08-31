@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="utf-8">
+	<title>infiSTAR Vision - Cloudban, RCon, Anti-Hack & Admin-Tools | infistar.de</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<meta name="referrer" content="origin">
+	<meta name="theme-color" content="#b41e1e">
+	<meta name="robots" content="all">
+	<meta name="keywords" content="infistar, infistar vision, vision cloudbans, infistar vision cloudban network, rcon, arma 3, ark, ark rcon, arma rcon, cloudbans, banlist, infistar antihack, anti-hack, anti-cheat, rust rcon tool, rust remote admin, admin-tools, metrics, arma metrics, rust metrics, rust, rust antihack, admin tools, admin tool, arma 2, exile, altis life">
+	<meta name="description" content="Most successful Anti-Hack, Admin- and RCon-Tool for ArmA, Rust & more. Automate and administrate your server with our RCon tools.">
+	<meta name="application-name" content="infiSTAR Vision">
+	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/img/vision-ios-icon.png">
+	<link href="/css/fontawesome.min.css" type="text/css" rel="stylesheet">
+	<link href="/css/core.min.css?v=1666294531" type="text/css" rel="stylesheet">
+	<link href="/css/semantic.min.css" type="text/css" rel="stylesheet">
+	<link href="/css/glide.core.min.css" type="text/css" rel="stylesheet">
+	<link href="/css/glide.theme.min.css" type="text/css" rel="stylesheet">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/semantic.min.js"></script>
+	<script src="/js/touchSwipe.min.js"></script>
+	<script src="/js/basic.min.js"></script>
+	<script src="/js/glide.min.js"></script>
+	<script src="/js/app.min.js"></script>
+</head>
+<body id="globals" data-version="{$versionInfo}">
+	<header id="headerBar" class="header-container">
+		<input type="hidden" id="csrf" value="{$csrf}">
+			<header class="header-content">
+				<div class="header-mobile-icon">
+					<i class="fas fa-center fa-bars"></i>
+				</div>
+				<a href="/" aria-label="Home">
+					<div class="header-logo"></div>
+				</a>
+				<ul class="navigation-items left">
+					<li>
+						<div class="ui dropdown">
+							<div class="text">Products</div>
+							<i class="dropdown icon"></i>
+							<div class="menu right-align">
+								<a class="item" href="/product/infistar-arma2" rel="noopener">infiSTAR for ArmA 2</a>
+								<a class="item" href="/product/infistar-arma3" rel="noopener">infiSTAR for ArmA 3</a>
+								<a class="item" href="/product/infistar-exile" rel="noopener">infiSTAR for EXILE</a>
+								<a class="item" style="color: #fff;background-color: var(--vision-red)" href="/#vision-features" rel="noopener">infiSTAR Vision</a>
+								<div class="divider"></div>
+								<a class="item" href="/product/infistar-tm" rel="noopener">infiSTAR TM</a>
+								<a class="item" href="/product/infistar-xm8apps" rel="noopener">infiSTAR XM8-Apps</a>
+								<div class="divider"></div>
+								<a class="item" href="/product/infistar-brc" rel="noopener">infiSTAR BRC</a>
+							</div>
+						</div>
+					</li>
+					<li><a href="/#vision-features">Features</a></li>
+					<li><a href="/games">Games</a></li>
+					<li><a href="/blog">News</a></li>
+					<li><a href="/about-us">Team</a></li>
+					<li><a href="/plans">Pricing</a></li>
+				</ul>
+				<ul class="navigation-items right">
+					<li><a rel="noopener" href="https://app.infistar.vision/login">Log In</a></li>
+					<li><a class="color-red" rel="noopener" href="https://app.infistar.vision/sign-up">Sign Up</a></li>
+				</ul>
+
+				<div class="header-mobile">
+					<div class="header-navbar-mobile-list">
+						<a href="/"><div class="header-mobile-list-head"></div></a>
+						<div class="header-mobile-list-item">
+							<span onclick="mobileDropDownProducts()">Products <i class="fas fa-chevron-down"></i></span>
+							<div class="hidden" id="mobileProducts">
+								<ul>
+									<li><a href="/product/infistar-arma2">infiSTAR for ArmA 2</a></li>
+									<li><a href="/product/infistar-arma3">infiSTAR for ArmA 3</a></li>
+									<li><a href="/product/infistar-exile">infiSTAR for EXILE</a></li>
+									<li><a href="/#vision-features">infiSTAR Vision</a></li>
+									<li><a href="/product/infistar-tm">infiSTAR TM</a></li>
+									<li><a href="/product/infistar-xm8apps">infiSTAR XM8-Apps</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="header-mobile-list-item">
+							<a href="/#vision-features">Vision</a>
+						</div>
+						<div class="header-mobile-list-item">
+							<a href="/blog">Blog</a>
+						</div>
+						<div class="header-mobile-list-item">
+							<a href="/about-us">Team</a>
+						</div>
+						<div class="header-mobile-list-item">
+							<a class="color-red" href="/plans">Pricing</a>
+						</div>
+						<div class="header-mobile-list-item">
+							<a rel="noopener" href="https://app.infistar.vision/login">Log In</a>
+						</div>
+						<div class="header-mobile-list-item">
+							<a class="color-red" rel="noopener" href="https://app.infistar.vision/sign-up">Sign Up</a>
+						</div>
+						<div class="header-mobile-list-item">
+							<a rel="noopener" href="https://discord.infistar.vision">Help Center</a>
+						</div>
+						<div class="header-mobile-list-item">
+							<a rel="noopener" href="https://discord.infistar.vision">Discord</a>
+						</div>
+					</div>
+				</div>
+				<span class="header-mobile-list-close"></span>
+
+			</header>
+	</header>
+	<main>
+
+<div class="site-content">
+    <section class="feature-card" style="padding: 2rem 0 6rem 0">
+        <div style="max-width: 80em; margin: 0 auto; padding: 0 1rem">
+            <h1 class="title-header" style="margin-bottom: 2rem">The Ultimate Antihack and Administration Tool.</h1>
+            <div class="header-icon width-100">
+                <img alt="header tool" src="/img/home_header.svg" width="100%" style="display: block; width: 75%; margin: 0 auto;">
+            </div>
+        </div>
+    </section>
+    <section class="colored-card red">
+        <div class="center-card" style="max-width: 75em">
+            <div class="color-white" style="font-weight: 600; font-size: 30px; text-align: left; padding-bottom: 1rem">Protect and control your gameservers.<br>Get started in just 5 minutes.</div>
+            <div class="signUp-now">
+                <a href="https://app.infistar.vision/sign-up" class="ui button" style="padding: 19px; margin-right: 2rem;border-radius: 4px;font-size: 20px;background-color: #fff;color: #333;border-color: #fff;">Sign Up</a>
+                <a href="https://discord.infistar.vision" class="ui button" style="padding: 19px;border-radius: 4px;font-size: 20px;background-color: #fff;color: #333;border-color: #fff;">Contact Us</a>
+            </div>
+        </div>
+    </section>
+    <div class="features">
+        <div class="feature active">
+            <div class="feature-icon"><i class="fal fa-cloud"></i></div>
+            <div class="feature-text">
+                <div class="feature-title">infiSTAR Vision</div>
+                <div class="feature-desc">Cloud-based RCon tools and more for all supported games.</div>
+                <div class="feature-footer"><a class="color-red" href="/product/infistar-arma3">Learn more <i class="fas fa-chevron-right"></i></a></div>
+            </div>
+        </div>
+        <div class="feature">
+            <div class="feature-icon"><i class="fal fa-gamepad"></i></div>
+            <div class="feature-text">
+                <div class="feature-title">infiSTAR ArmA 2</div>
+                <div class="feature-desc">Local anti-cheat and admin-tools for your ArmA 2 server.</div>
+                <div class="feature-footer"><a href="/product/infistar-arma2">Learn more <i class="fas fa-chevron-right"></i></a></div>
+            </div>
+        </div>
+        <div class="feature">
+            <div class="feature-icon"><i class="fal fa-gamepad"></i></div>
+            <div class="feature-text">
+                <div class="feature-title">infiSTAR ArmA 3</div>
+                <div class="feature-desc">Local anti-cheat and admin-tools for your ArmA 3 server.</div>
+                <div class="feature-footer"><a class="color-red" href="/product/infistar-arma3">Learn more <i class="fas fa-chevron-right"></i></a></div>
+            </div>
+        </div>
+        <div class="feature">
+            <div class="feature-icon"><i class="fal fa-gamepad"></i></div>
+            <div class="feature-text">
+                <div class="feature-title">infiSTAR EXILE</div>
+                <div class="feature-desc">Local anti-cheat and admin-tools for your ArmA 3 EXILE server.</div>
+                <div class="feature-footer"><a class="color-red" href="/product/infistar-exile">Learn more <i class="fas fa-chevron-right"></i></a></div>
+            </div>
+        </div>
+    </div>
+	<div class="feature-card" id="learnMoreVision" style="padding-top: 0;">
+		<span class="feature-title">Learn More About Vision</span>
+        <div class="feature-desc">Manage your servers with just a few clicks.</div>
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="slide-image">
+                                    <img alt="Livemap" src="/img/slider/vision_wi_slider_9.png" width="1000" height="600">
+                                    <p>Interactive Livemap with teleport features and more.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="slide-image">
+                                    <img alt="Vision Network" src="/img/slider/vision_wi_slider_1.png" width="1000" height="600">
+                                    <p>Every player will be checked by our bancloud. Banned player will be kicked from your server.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="slide-image">
+                                    <img alt="RCon Console" src="/img/slider/vision_wi_slider_11.png" width="1000" height="600">
+                                    <p>Live RCon console terminal with command and filter options.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="slide-image">
+                                    <img alt="Server Overview" src="/img/slider/vision_wi_slider_2.jpg" width="1000" height="600">
+                                    <p>Detailed overview of all players currently playing on your server.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="slide-image">
+                                    <img alt="Discord" src="/img/slider/vision_wi_slider_12.png" width="1000" height="600">
+                                    <p>Send messages to the server. Automate your broadcasts by the minute, hour or day.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="slide-image">
+                                    <img alt="Server Overview" src="/img/slider/vision_wi_slider_3.png" width="1000" height="600">
+                                    <p>You can add up to 20 servers to your account. Sharing servers with community members is also possible.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="slide-image">
+                                    <img alt="Zeus Console" src="/img/slider/vision_wi_slider_4.png" width="1000" height="600">
+                                    <p>Execute code on your server remotely through our webinterface. Same as the Debug Console in ArmA 3.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="slide-image">
+                                    <img alt="Ban Cloud" src="/img/slider/vision_wi_slider_5.png" width="1000" height="600">
+                                    <p>Create custom ban lists and connect them with your servers. All your bans are synced between your servers.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="slide-image">
+                                    <img alt="Server Dashboard" src="/img/slider/vision_wi_slider_6.png" width="1000" height="600">
+                                    <p>Our server dashboard contains metrics and important server information like player count etc.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="slide-image">
+                                    <img alt="Firewall" src="/img/slider/vision_wi_slider_7.png" width="1000" height="600">
+                                    <p>Create custom join rules or use our predefined restrictions like VAC Ban Limit etc.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="slide-image">
+                                    <img alt="Firewall" src="/img/slider/vision_wi_slider_8.png" width="1000" height="600">
+                                    <p>Share your server with your admins, supporters, etc.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-container">
+                            <div class="slide-content">
+                                <div class="slide-image">
+                                    <img alt="Discord" src="/img/slider/vision_wi_slider_10.png" width="1000" height="600">
+                                    <p>Connect your Discord server with our services.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fas fa-chevron-left fa-2x color-red"></i></button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fas fa-chevron-right fa-2x color-red"></i></button>
+            </div>
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+                <button class="glide__bullet" data-glide-dir="=0"></button>
+                <button class="glide__bullet" data-glide-dir="=1"></button>
+                <button class="glide__bullet" data-glide-dir="=2"></button>
+                <button class="glide__bullet" data-glide-dir="=3"></button>
+                <button class="glide__bullet" data-glide-dir="=4"></button>
+                <button class="glide__bullet" data-glide-dir="=5"></button>
+                <button class="glide__bullet" data-glide-dir="=6"></button>
+                <button class="glide__bullet" data-glide-dir="=7"></button>
+                <button class="glide__bullet" data-glide-dir="=8"></button>
+                <button class="glide__bullet" data-glide-dir="=9"></button>
+                <button class="glide__bullet" data-glide-dir="=10"></button>
+                <button class="glide__bullet" data-glide-dir="=11"></button>
+            </div>
+        </div>
+	</div>
+    <div class="feature-card" style="background-color: var(--vision-features); border-top: 1px solid var(--vision-line); border-bottom: 1px solid var(--vision-line)">
+        <span class="feature-title">Trusted By</span>
+        <div class="feature-text">
+            <div class="feature-desc">Over 10,000 Servers worldwide.</div>
+            <ul id="trustedBy">
+                <li><img alt="Gadd Gaming" src="/img/trustedby/gadd.png"><div>Gadd</div></li>
+                <li><img alt="ZeroOne Gaming" src="/img/trustedby/zeroone.png"><div>ZeroOne</div></li>
+                <li><img alt="PhoenixRP Gaming" src="/img/trustedby/phoenix.png"><div>PhoenixRP</div></li>
+                <li><img alt="RebornRP Gaming" src="/img/trustedby/reborn.png"><div>RebornRP</div></li>
+                <li><img alt="MGT Gaming" src="/img/trustedby/mgt.png"><div>MGT</div></li>
+                <li><img alt="Ignatz Gaming" src="/img/trustedby/ignatz.png"><div>Ignatz</div></li>
+            </ul>
+        </div>
+    </div>
+    <div class="feature-card">
+        <div class="grid-container duo" style="margin-top: 3rem">
+            <div class="grid-card-blank">
+                <div class="title-small">Vision Web App</div>
+                <div class="title">Fast. Modern. Worldwide.</div>
+                <div class="desc">Configure and manage your server from any device. Create Join Rules, Banlists, Whitelists or view the latest server metrics online and in realtime. Spend less time installing third-party scripts on your server.</div>
+            </div>
+            <div class="grid-card-blank">
+                <img alt="Vision in Browser" src="/img/svg/vision_browser.svg" style="max-width: 80%; height: auto;">
+            </div>
+
+            <div class="grid-card-blank">
+                <img alt="Vision API" src="/img/svg/vision_api.svg" style="max-width: 60%; height: auto;">
+            </div>
+            <div class="grid-card-blank">
+                <div class="title-small">Vision API & Backend</div>
+                <div class="title">Scaleable. Secure. Reliable.</div>
+                <div class="desc">Our central API establishes a persistent 24/7 RCon connection with your server. We store information such as chats, player logs, rcon actions, etc. You can access all gathered information in our web app.</div>
+            </div>
+            <div class="grid-card-blank">
+                <div class="title-small">Vision Client</div>
+                <div class="title">No configuration. Easy installation. Quick.</div>
+                <div class="desc">Download and deploy the Vision client on your gameserver. Setup takes less than a minute. Our client communicates with our backend to ensure that you receive the latest updates in your server dashboard.</div>
+            </div>
+            <div class="grid-card-blank">
+                <img alt="Vision Client" src="/img/svg/vision_client.svg" style="max-width: 60%; height: auto;">
+            </div>
+        </div>
+    </div>
+    <section class="colored-card red" style="margin-bottom: 0">
+        <div class="center-card" style="max-width: 73em">
+            <div class="feature-title color-white" style="font-weight: 600; padding-bottom: 1rem; font-size: 30px;text-align: left">Game fits?<br>Join infiSTAR today.</div>
+            <div class="signUp-now">
+                <div class="grid-container trio no-margin">
+                    <div class="grid-card no-border" style="background-color: var(--vision-red); padding: 0;">
+                        <img alt="ArmA 2" src="/img/games/a2.jpg" width="160" height="auto">
+                    </div>
+                    <div class="grid-card no-border" style="background-color: var(--vision-red); padding: 0;">
+                        <img alt="ArmA 3" src="/img/games/a3.jpg" width="160" height="auto">
+                    </div>
+                    <div class="grid-card no-border" style="background-color: var(--vision-red); padding: 0;">
+                        <img alt="ArmA 3" src="/img/games/rust.jpg" width="160" height="auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="feature-card">
+        <span class="shortcut" id="vision-features"></span>
+        <span class="feature-title">Key Features</span>
+        <div class="feature-text">
+            <div class="feature-desc">Quick overview of the most important features.</div>
+            <div class="grid-container">
+                <div class="grid-card">
+                    <div class="flex">
+                        <i class="grid-card-icon fal color-red fa-link"></i>
+                        <div class="grid-card-title">24/7 RCon</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Our servers are connected 24/7 with your gameserver. You can always kick/ban players, edit the banlist or view the rcon console.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-bolt"></i>
+                        <div class="grid-card-title">RCon History</div>
+                    </div>
+                    <div class="grid-card-text">
+                        RCon console information is stored for 90 days and can be displayed to the minute.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-bolt"></i>
+                        <div class="grid-card-title">Zeus</div>
+                    </div>
+                    <div class="grid-card-text">
+                        With Zeus (=Remote-Code-Execution) you can send SQF-Code to your server. You can target a specific player or the whole server.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-dungeon"></i>
+                        <div class="grid-card-title">Firewall</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Specify custom or predefined checks e.g VPN, VAC, ISP, Nickname etc. to kick players you don't want on your server.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-calendar-alt"></i>
+                        <div class="grid-card-title">Scheduler</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Send messages to the server. Automate your broadcasts by the minute, hour or day.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-chart-line"></i>
+                        <div class="grid-card-title">Metrics</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Check important server information like CPU-, RAM-, FPS-Usage, Vehicle Objects, etc.
+                    </div>
+                </div>
+
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-lock"></i>
+                        <div class="grid-card-title no-margin">Server Lockdown</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Prevent non-whitelisted players from joining. You don't need a server password anymore.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-chart-network"></i>
+                        <div class="grid-card-title">Bancloud</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Cheating, duping and hacking players are blacklisted in our global banlist. This list is managed by Vision.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-map-marked-alt"></i>
+                        <div class="grid-card-title">Livemap</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Check your players and map markers online on our interactive livemap. You can teleport players and much more.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-binoculars"></i>
+                        <div class="grid-card-title">Reporting</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Report hacking or duping players in our webinterface. Our support will review your case.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-terminal"></i>
+                        <div class="grid-card-title no-margin">Quick Actions</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Send quick commands e.g Reload Bans, Shutdown Server, Set MOTD with just one click.
+                    </div>
+                </div>
+
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-user-tag"></i>
+                        <div class="grid-card-title">Player Info</div>
+                    </div>
+                    <div class="grid-card-text">
+                        List of currently playing players on your server. Kick, Ban, Message or request Steam Profile information like VAC-Status, Registration date etc.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-users"></i>
+                        <div class="grid-card-title">Members</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Share your server with other admins in your community. You can set specific permissions individually.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-moon"></i>
+                        <div class="grid-card-title">Dark Mode</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Enable this will change the webinterface in a dark theme. Your eyes will thank you.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-clipboard-check"></i>
+                        <div class="grid-card-title">Audit Logs</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Every action is logged. This allows you full control over your members.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-history"></i>
+                        <div class="grid-card-title no-margin">Player History</div>
+                    </div>
+                    <div class="grid-card-text">
+                        We save every connected player on your server. You can search every disconnected player in the last 30 days. This allows further actions such as banning the player at a later time.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-scroll"></i>
+                        <div class="grid-card-title">Server Logs</div>
+                    </div>
+                    <div class="grid-card-text">
+                        You can use our server client to retrieve the current server logs and view them online in our web app.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-user-times"></i>
+                        <div class="grid-card-title no-margin">Banlist Manager</div>
+                    </div>
+                    <div class="grid-card-text">
+                        With the banlist manager you can create several banlists in the web app and assign them to your servers. The banlist is independent from the actual game server.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-bolt"></i>
+                        <div class="grid-card-title no-margin">Reserved Slots</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Reserve any number of player slots to keep them free for special players like admins or streamers.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-share"></i>
+                        <div class="grid-card-title no-margin">Shared Bans</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Banned players will be shared across all supported infiSTAR games. For example a banned Rust player will be banned in ArmA as well.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-tasks"></i>
+                        <div class="grid-card-title">Join Rules</div>
+                    </div>
+                    <div class="grid-card-text">
+                        A player needs to pass join rules like Steam Account Age, Played Hours, etc. to join your server.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-user-check"></i>
+                        <div class="grid-card-title">Whitelist</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Whitelisted players will be excluded from all player checks. They can always join your server.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-ethernet"></i>
+                        <div class="grid-card-title">Public API</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Our public API allows you to integrate our services into your community tools.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-fingerprint"></i>
+                        <div class="grid-card-title">UID <=> GUID</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Convert any Steam UID into a BattlEye GUID and vice versa.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-tags"></i>
+                        <div class="grid-card-title no-margin">Suitable Plans</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Choose between three subscription plans. We guarantee that there will be a suitable plan available for your server.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-shopping-cart"></i>
+                        <div class="grid-card-title no-margin">Pay as you like</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Choose between a prepaid and a subscription model. We offer multiple payment methods for each.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fal color-red fa-bell"></i>
+                        <div class="grid-card-title no-margin">Notification Manager</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Always up to date, even if there was a longer break between your last visit.
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="flex width-100">
+                        <i class="grid-card-icon fab color-red fa-discord"></i>
+                        <div class="grid-card-title no-margin">Discord Webhooks</div>
+                    </div>
+                    <div class="grid-card-text">
+                        Connect your Discord server with our API to receive notifications.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="feature-card"  style="background-color: var(--vision-features); border-top: 1px solid var(--vision-line)">
+        <div class="products-package-container">
+            <div class="products-package-content">
+                <div class="products-package-icon"><i class="fas fa-gamepad"></i></div>
+                <div class="products-package-title">Admin Tool</div>
+                <p>infiSTAR delivers an unique admin tool with more than 50 features. You can e.g. spawn vehicles, control players, spawn buildings or administrate your server.</p>
+            </div>
+            <div class="products-package-content">
+                <div class="products-package-icon"><i class="fas fa-dungeon"></i></div>
+                <div class="products-package-title">Anti-Hack</div>
+                <p>infiSTAR comes with a built-in anti-hack. We can detected e.g. commonly known hacks, dupers or toxic players. We are constantly working on our anti-cheat to improve online gaming. We released the first version in 2011.</p>
+            </div>
+            <div class="products-package-content">
+                <div class="products-package-icon"><i class="fas fa-eye"></i></div>
+                <div class="products-package-title">Vision Webinterface + Client</div>
+                <p>Vision allows you to customize and secure your server even better. You can administrate your server in our web app all around the world.</p>
+            </div>
+        </div>
+    </div>
+    <section class="colored-card red" style="margin-bottom: 0">
+        <div class="center-card" style="max-width: 70em">
+            <div class="feature-title color-white" style="font-weight: 600; font-size: 30px; padding-bottom: 1rem; text-align: left">Take a look by yourself.<br>Join infiSTAR today.</div>
+            <div class="signUp-now">
+                <a href="https://app.infistar.vision/sign-up" class="ui button" style="padding: 19px; margin-right: 2rem;border-radius: 4px;font-size: 20px;background-color: #fff;color: #333;border-color: #fff;">Sign Up</a>
+                <a href="https://discord.infistar.vision" class="ui button" style="padding: 19px;border-radius: 4px;font-size: 20px;background-color: #fff;color: #333;border-color: #fff;">Contact Us</a>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+    new Glide('.glide', {
+        autoplay: 7000,
+        hoverpause: true
+    }).mount();
+</script>
+</main>
+</body>
+    <footer class="footer-container">
+        <div class="footer-content">
+            <ul class="footer-content-list">
+                <li>
+                    <div class="footer-item-title">Products</div>
+                    <ul>
+                        <li><a href="https://infistar.vision/plans">Plans</a></li>
+                        <li><a href="https://infistar.vision/product/infistar-exile">infiSTAR for EXILE</a></li>
+                        <li><a href="https://infistar.vision/product/infistar-arma3">infiSTAR for ArmA 3</a></li>
+                        <li><a href="https://infistar.vision/product/infistar-arma2">infiSTAR for ArmA 2</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="footer-item-title">Support</div>
+                    <ul>
+                        <!--<li><a href="https://app.infistar.vision/support">Contact Support</a></li>-->
+                        <li><a href="https://discord.infistar.vision">Contact Support</a></li>
+                        <li><a href="https://discord.infistar.vision">Discord</a></li>
+                        <li><a href="https://api.infistar.vision">API Documentation</a></li>
+                        <li><a href="https://infistar.vision/blog">News</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="footer-item-title">About</div>
+                    <ul>
+                        <li><a href="https://infistar.vision/imprint">Imprint</a></li>
+                        <li><a href="https://infistar.vision/terms">Terms of Use</a></li>
+                        <li><a href="https://infistar.vision/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="https://infistar.vision/cookie-policy">Cookie Policy</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="footer-item-title">Contact</div>
+                    <ul>
+                        <li><a href="https://discord.infistar.vision">Contact Support</a></li>
+                        <li><a href="https://discord.infistar.vision">Contact Sales</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <p style="text-align: center; background-color: var(--vision-container-footer); font-size: .75rem; padding-top: 1.5rem">Copyright infiSTAR © 2020. All rights reserved. All prices include VAT.</p>
+    </footer>
+    <div class="notification-cookie">
+        <div id="cookieBanner" style="display: block" class="alert-cookie"></span><span style="color: var(--vision-grey-dark); margin: 0; padding: 0" class="message-status-message update">To provide you with the best possible experience on our website, we may use cookies, as described <a style="text-decoration: underline; color: var(--vision-text)" href="https://infistar.de/cookie-policy" rel="noopener" target="_blank">here</a>.<br>By clicking accept, closing this banner, or continuing to browse our websites, you accept the use of cookies on our website and services.<br><button type="button" style="margin-top: .5rem; background-color: var(--vision-grey); color: var(--vision-text);" onclick="acceptCookieBanner(this)" class="ui button">I accept</button></span></div>
+    </div>
+</html>
+
