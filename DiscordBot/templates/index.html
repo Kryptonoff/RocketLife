@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Discord Embed Sender</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center">
+  <div class="bg-gray-800 p-8 rounded-xl w-full max-w-2xl shadow-xl">
+    <h1 class="text-3xl font-bold mb-6 text-center">💬 Discord Embed Sender</h1>
+    <form method="post" action="/send" class="space-y-4">
+      <div>
+        <label class="block mb-1">Сервер и канал:</label>
+        <select name="channel" id="channel" class="w-full p-2 bg-gray-700 rounded">
+          {% for gid, g in guilds.items() %}
+            <optgroup label="{{ g.name }}">
+              {% for ch in g.channels %}
+                <option value="{{ ch.id }}">{{ ch.name }}</option>
+              {% endfor %}
+            </optgroup>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="block mb-1">Заголовок:</label>
+        <input type="text" name="title" class="w-full p-2 bg-gray-700 rounded">
+      </div>
+      <div>
+        <label class="block mb-1">Описание:</label>
+        <textarea name="description" class="w-full p-2 bg-gray-700 rounded" rows="4"></textarea>
+      </div>
+      <div>
+        <label class="block mb-1">Цвет:</label>
+        <input type="color" name="color" class="w-full h-10 p-1 bg-gray-700 rounded" value="#00ff00">
+      </div>
+      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 p-2 rounded text-white font-semibold">📨 Отправить Embed</button>
+    </form>
+  </div>
+</body>
+</html>
